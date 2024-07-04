@@ -3,22 +3,27 @@ import random
 
 # Setup the turtle
 turtle.speed(0)  # Fastest drawing speed
-turtle.penup()   # Lift the pen to move without drawing
+turtle.bgcolor("black")  # Set background color to black
+
+# List of colors to use in the spiral
+colors = ["red", "orange", "yellow", "green", "blue", "purple", "pink"]
 
 # Set the initial position
-turtle.setposition(10, -10)
+turtle.penup()
+turtle.setposition(0, 0)
 turtle.pendown() # Start drawing
 
-# Draw different types of circles in a loop
-for i in range(1000):
-    radius = random.randint(50, 200)      # Random radius between 50 and 200
-    extent = random.uniform(30, 360)      # Random extent between 30 and 360 degrees
-    steps = random.randint(3, 20)         # Random number of steps between 3 and 20
-    turtle.circle(radius, extent, steps)  # Draw part of a circle
+# Initialize parameters for the spiral
+radius = 10
+angle = 10
+num_circles = 100
 
-# Lift the pen and move to a new position
-turtle.penup()
-turtle.setposition(-10, -40)
+# Draw spiral circles in a loop
+for i in range(num_circles):
+    turtle.color(random.choice(colors))  # Change color for each circle
+    turtle.circle(radius, 360)  # Draw a full circle
+    turtle.right(angle)         # Change direction
+    radius += 2                 # Increment radius for spiral effect
 
 # Hide the turtle and display the result
 turtle.hideturtle()
