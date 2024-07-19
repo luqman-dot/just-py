@@ -1,185 +1,204 @@
-import turtle as t
+"""
+FALLING SPADES | Cole Heiman | Introductory Programming
+-------------------------------------------------------
+This program will create a number of cards doing a 
+"bounce", (its more of a zigzag now) animation based on a user input
+if a specific number of cards is guessed a win animation
+will play during the end of the render
+and if not the game ends
+(TIP: Look at the brightness of the cards to figure out the number!)
+IF THE SPADES AT THE END ARE RED YOU FAILED, IF THEY ARE GREEN YOU WIN!
 
-# Starting conditions
-t.speed(0)
-t.penup()
-t.bgcolor("black")
-
-winloss = input("Win/lose screen? (y/n): ")
-
-# Lose function
+"""
+#starting conditions
+speed(0)
+penup()
+bgcolor("black")
+winloss = input("Win / loose screen?(y/n): ")
+#Lose function
 def lose(losheight):
-    t.bgcolor("white")
-    t.clear()
-    t.penup()
-    t.color((255, 0, 0))
+    bgcolor("white")
+    clear()
+    penup()
     while losheight > -200:
-        t.setposition(-200, losheight)
+        setposition(-200, losheight)
         for i in range(10):
+            color((255,0,0))
             drawSpade()
-            t.forward(100)
-        losheight -= 100
-
-# Win function
+            forward(100)
+        losheight = losheight - 100
+    
+#Win function
 def win(winheight):
-    t.bgcolor("white")
-    t.clear()
-    t.penup()
-    t.color((0, 255, 0))
+    bgcolor("white")
+    clear()
+    penup()
     while winheight > -200:
-        t.setposition(-200, winheight)
+        setposition(-200, winheight)
         for i in range(10):
+            color((0,255,0))
             drawSpade()
-            t.forward(100)
-        winheight -= 100
+            forward(100)
+        winheight = winheight - 100
+    
+        
 
-# Function for drawing the spade shape
+#CARDS variable
+cards = int(input("Guess how many ace of spades im thinking of?(out of 42): "))
+
+#func for drawing the spade shape
 def drawSpade():
-    t.begin_fill()
-    t.left(75)
-    t.circle(15, 210, 2)
-    t.right(60)
-    t.circle(10.2, 180)
-    t.right(90)
-    t.circle(10.2, 180)
-    t.end_fill()
-    t.left(45)
-    t.forward(9.5)
-    t.begin_fill()
-    for _ in range(2):
-        t.forward(9.75)
-        t.left(90)
-        t.forward(25)
-        t.left(90)
-    t.end_fill()
-    t.forward(4.625)
-    t.left(90)
-    t.forward(25)
-    t.left(90)
+    begin_fill()
+    left(75)
+    circle(15, 210, 2)
+    right(60)
+    circle(10.2, 180)
+    right(90)
+    circle(10.2, 180)
+    end_fill()
+    
+    left(45)
+    forward(9.5)
+    begin_fill()
+    for i in range(2):
+        forward(9.75)
+        left(90)
+        forward(25)
+        left(90)
+    end_fill()
+    forward(4.625)
+    left(90)
+    forward(25)
+    left(90)
 
-# Function for drawing the card
+#variable for brightness of cards
+britns = 0
+
+#func for drawing the card
 def drawAce(britns, hue):
-    t.pendown()
-    t.begin_fill()
-    t.color((britns-120 + (hue-120), britns-120 + (hue-250), britns-120 + (hue-100)))
-    for _ in range(2):
-        t.forward(90)
-        t.circle(4, 90)
-        t.forward(140)
-        t.circle(4, 90)
-    t.color((britns, britns, britns))
-    t.end_fill()
-    t.color("black")
-    t.penup()
-    t.forward(85)
-    t.left(90)
-    t.forward(30)
-    t.right(90)
-    t.color((britns-120 + (hue-120), britns-120 + (hue-250), britns-120 + (hue-100)))
+    pendown()
+    begin_fill()
+    color((britns-120 + (hue-120), britns-120 + (hue-250), britns-120 + (hue-100)))
+    for i in range(2):
+        forward(90)
+        circle(4, 90)
+        forward(140)
+        circle(4, 90)
+    color((britns, britns, britns))
+    end_fill()
+    color("black")
+    penup()
+    forward(85)
+    left(90)
+    forward(30)
+    right(90)
+    color((britns-120 + (hue-120), britns-120 + (hue-250), britns-120 + (hue-100)))
     drawSpade()
-    t.left(90)
-    t.forward(110)
-    t.left(90)
-    t.forward(67)
+    left(90)
+    forward(110)
+    left(90)
+    forward(67)
     drawSpade()
-    t.left(180)
-    t.forward(27)
-    t.right(90)
-    t.forward(110)
-    t.left(90)
+    
+    left(180)
+    forward(27)
+    right(90)
+    forward(110)
+    left(90)
 
-# Main program
-cards = int(input("Guess how many ace of spades I'm thinking of? (out of 42): "))
-t.setposition(-200, -100)
+#the order of actions of the program
+setposition(-200, -100)
 
-# Ascending cards (4)
+
+#ascending cards (4)
 if cards < 4:
     for i in range(0, cards * 15, 14):
-        drawAce(i, i)
-        t.backward(38)
+     drawAce(i, i)
+     backward(38)
+     
 else:
     for i in range(0, 56, 14):
-        drawAce(i, i)
-        t.backward(38)
-    # Descending cards (10)
+     drawAce(i, i)
+     backward(38)
+    #descending cards (10)
     if cards < 14:
         for i in range(56, cards * 15, 14):
             drawAce(i, i)
-            t.left(90)
-            t.backward(50)
-            t.right(90)
-            t.backward(38)
+            left(90)
+            backward(50)
+            right(90)
+            backward(38)
     else:
         for i in range(56, 196, 14):
             drawAce(i, i)
-            t.left(90)
-            t.backward(50)
-            t.right(90)
-            t.backward(38)
-        # Re-ascending cards (4)
+            left(90)
+            backward(50)
+            right(90)
+            backward(38)
+        #re-ascending cards (4)
         if cards < 18:
             for i in range(195, cards * 14, 14):
-                drawAce(i, i)
-                t.backward(38)
+                drawAce(i,i)
+                backward(38)
+                
         elif cards == 18:
             for i in range(198, 255, 14):
-                drawAce(i, i)
-                t.backward(38)
-            t.speed(1)
-            t.forward(500)
-            t.speed(0)
+                drawAce(i,i)
+                backward(38)
+            speed(1)
+            forward(500)
+            speed(0)
             if winloss == "y":
                 win(500)
-        # Reascending cards (7)
+        #reascending cards (7)
         elif cards < 22:
             for i in range(195, cards * 14, 14):
-                drawAce(i, i)
-                t.backward(38)
-            t.speed(1)
-            t.forward(500)
-            t.speed(0)
+                drawAce(i,i)
+                backward(38)
+            speed(1)
+            forward(500)
+            speed(0)
             if winloss == "y":
                 lose(500)
+        
         else:
             for i in range(195, 293, 14):
-                drawAce(i, i)
-                t.backward(38)
-            # Redescending cards x2 (12)
+                drawAce(i,i)
+                backward(38)
+            #redescending cards x2 (12)
             if cards < 32:
-                for i in range(242, 228 - (14 * (cards - 21)), -14):
-                    drawAce(i, i)
-                    t.left(90)
-                    t.backward(50)
-                    t.right(90)
-                    t.backward(38)
-                t.speed(1)
-                t.forward(500)
-                t.speed(0)
+                for i in range(242,228-(14*(cards - 21)), -14):
+                    drawAce(i,i)
+                    left(90)
+                    backward(50)
+                    right(90)
+                    backward(38)
+                speed(1)
+                forward(500)
+                speed(0)
                 if winloss == "y":
                     lose(500)
-            # Rerereascending cards (10)
+            #rerereascending cards (10)
             elif cards == 32:
-                for i in range(242, 74, -14):
-                    drawAce(i, i)
-                    t.left(90)
-                    t.backward(50)
-                    t.right(90)
-                    t.backward(38)
+                for i in range(242,74, -14):
+                    drawAce(i,i)
+                    left(90)
+                    backward(50)
+                    right(90)
+                    backward(38)
             else:
-                for i in range(242, 74, -14):
-                    drawAce(i, i)
-                    t.left(90)
-                    t.backward(50)
-                    t.right(90)
-                    t.backward(38)
+                for i in range(242,74, -14):
+                    drawAce(i,i)
+                    left(90)
+                    backward(50)
+                    right(90)
+                    backward(38)
                 if cards > 32:
-                    for i in range(74, 74 + 14 * (cards - 32), 14):
-                        drawAce(i, i)
-                        t.backward(38)
-                    t.speed(1)
-                    t.forward(500)
-                    t.speed(0)
+                    for i in range(74, 74+14*(cards - 32), 14):
+                        drawAce(i,i)
+                        backward(38)
+                    speed(1)
+                    forward(500)
+                    speed(0)
                     if winloss == "y":
                         lose(500)
-
-t.done()
