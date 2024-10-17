@@ -13,11 +13,11 @@ print(r"""
                                                       |___/     """)
 def main(): 
     def start_over():
-        print("Kanye never finds his family and dies alone. Try Again!")
+        print("Peter never finds his family and dies alone. Try Again!")
         main()
         
     def invalid_input():
-        print("Invalid input, Kanye never finds his family and dies alone. Try Again!")
+        print("Invalid input, Peter never finds his family and dies alone. Try Again!")
         main()
     
     print("")
@@ -27,10 +27,10 @@ def main():
         start_over()
     elif start_of_game == "yes":
         print(" ")
-        print("Previously on Kanye Quest….")
-        print("Drake and Kanye’s long feud had come to an end when Kanye stopped Drake's tomfoolery,")
-        print("Now that the beef has been squashed, as Kanye and Drake will soon find out that there is a new enemy amidst,")
-        print("threatening not just Kanye's Yeezys but the man's family. The two unlikely foes will have to join forces to stop this threat.")
+        print("Previously on Peter Quest….")
+        print("Moses and Peter’s long feud had come to an end when Peter stopped Moses's tomfoolery,")
+        print("Now that the beef has been squashed, as Peter and Moses will soon find out that there is a new enemy amidst,")
+        print("threatening not just Peter's but the man's family. The two unlikely foes will have to join forces to stop this threat.")
         
         still = input("Would you still like to play? (yes/no)  ").strip().lower()
         if still == "no":
@@ -40,11 +40,11 @@ def main():
             print(" ")
             print("Then let's start the game!")
             print(" ")
-            print("Setting: Donda 2 concert")
+            print("Setting: WOnda 1 concert")
             print(" ")
-            print("Kanye is performing in front of a large crowd, he is in the middle of performing when he notices that his lovely wife Kim and his children are taken against their will by hooded figures.")
-            print(" Kanye is shocked but as a true gentleman he finishes the concert and then acts accordingly.")
-            print("Kanye frantically searches around the stadium for his wife and kids to no success.")
+            print("Peter is performing in front of a large crowd, he is in the middle of performing when he notices that his lovely wife Winnie and his children are taken against their will by hooded figures.")
+            print(" Peter is shocked but as a true gentleman he finishes the concert and then acts accordingly.")
+            print("Peter frantically searches around the stadium for his wife and kids to no success.")
             print(r"""
                         ................                                             
                     ............................                                        
